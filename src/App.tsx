@@ -5,23 +5,13 @@ import { AddShoppingCart } from '@material-ui/icons';
 import React, {useState,} from 'react';
 import { useQueries, useQuery } from 'react-query';
 
-
 // custom styles
 import { Wrapper } from './app.style';
 
 
 // types
+import { CartItemType } from './Types/Cart';
 
-export type CartItemType = {
-  id: number;
-  category: string;
-  description: string;
-  image: string;
-  title: string;
-  price: number;
-  amount: number;
-}
- 
 
 // util functions
 
@@ -40,7 +30,7 @@ function App() {
 
   const getTotalItems = () => null;
 
-  const handleAddToCart = () => null;
+  const handleAddToCart = (item: CartItemType) => null;
 
   const handleRemoveFromCart = () => null;
 
