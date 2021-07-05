@@ -6,7 +6,7 @@ import React, {useState,} from 'react';
 import { useQueries, useQuery } from 'react-query';
 import Item from './Item/Item';
 // custom styles
-import { Wrapper } from './app.style';
+import { StyledButton, Wrapper } from './app.style';
 
 
 // types
@@ -23,12 +23,15 @@ const getProducts = async (): Promise<CartItemType[]> => await (await fetch('htt
 
 function App() {
   const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts)
-
+  const [isCartOpen, setIsCartOpen] = useState(false)
+  const [cartItems, setCartItems] = useState([] as CartItemType[])
   console.log(data,'data')
 
   // handlers 
 
-  const getTotalItems = () => null;
+  const getTotalItems = (items: CartItemType[]) => (
+    items.reduce((sum:number, item) => sum+item.amount, 0)
+  )
 
   const handleAddToCart = (item: CartItemType) => null;
 
@@ -39,6 +42,14 @@ function App() {
 
   return (
     <Wrapper>
+      <Drawer anchor='right' open={isCartOpen} onClose={() => setIsCartOpen(false)}>
+        Cart goes here
+      </Drawer>
+      <StyledButton onClick={() => setIsCartOpen(true)}>
+        <Badge badgeContent={getTotalItems(cartItems)} color="error">
+          <AddShoppingCart/>
+        </Badge>
+      </StyledButton>
       <Grid container spacing={3} >
         {
           data?.map((item, index) => (

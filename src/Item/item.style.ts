@@ -7,9 +7,9 @@ export const Wrapper = styled.div`
   width: 100%;
   border: 1px solid lightblue;
   height: 100%;
-  button: {
-      border: 0 0 20px 20px;
 
+  button {
+      border: 0 0 20px 20px;
   }
 
   img{
