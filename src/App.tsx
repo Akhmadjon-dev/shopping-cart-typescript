@@ -35,6 +35,18 @@ function App() {
   const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts)
 
   console.log(data,'data')
+
+  // handlers 
+
+  const getTotalItems = () => null;
+
+  const handleAddToCart = () => null;
+
+  const handleRemoveFromCart = () => null;
+
+  if(isLoading) return <LinearProgress/>
+  if(error) return <div>Something went wrong...</div>
+
   return (
     <div className="app">
         app
