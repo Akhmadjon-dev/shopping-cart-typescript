@@ -15,7 +15,7 @@ type Props = {
 
 const Item : React.FC<Props>  = ({item, handleAddToCart}) => (
     <Wrapper>
-        <img src={item.title} alt={item.title} />
+        <img src={item.image} alt={item.title} />
         <div>
             <h3>
                 {item.title}
@@ -32,3 +32,5 @@ const Item : React.FC<Props>  = ({item, handleAddToCart}) => (
         </Button>
     </Wrapper>
 )
+
+export default Item

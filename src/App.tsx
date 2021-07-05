@@ -4,7 +4,7 @@ import { Drawer } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
 import React, {useState,} from 'react';
 import { useQueries, useQuery } from 'react-query';
-
+import Item from './Item/Item';
 // custom styles
 import { Wrapper } from './app.style';
 
@@ -38,9 +38,18 @@ function App() {
   if(error) return <div>Something went wrong...</div>
 
   return (
-    <div className="app">
-        app
-    </div>
+    <Wrapper>
+      <Grid container spacing={3} >
+        {
+          data?.map((item, index) => (
+            <Grid item key={item.id}  xs={12} sm={4}>
+              <Item item={item} handleAddToCart={handleAddToCart}/>
+            </Grid>
+          ))
+        }
+
+      </Grid>
+    </Wrapper>
   );
 }
 
